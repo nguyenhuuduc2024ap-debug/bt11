@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chi tiết con vật</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container detail-container">
+        <h1 id="animalName"></h1>
+        <p id="animalDesc" style="font-style: italic; color: #555;"></p>
+        <div id="animalImages">
+            </div>
+        <a href="index.html" class="btn-back">Back to Home</a>
+    </div>
+
+    <footer class="main-footer">
+                <div class="container footer-content">
+            <div class="footer-info">
+                <h3>Website: Con Vật</h3>
+                <p>Học sinh: <b>nguyễn hữu đức</b></p>
+                <p>Hotline: 0909 123 456</p>
+                <p>Facebook: <a href="https://www.facebook.com/bdi.edu.vn">Trường Trung cấp công nghiệp Bình Dương</a></p>
+            </div>
+            <div class="footer-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62685.30132598959!2d106.74007799718852!3d10.900419871092451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d83c1116183d%3A0xfa754495eeb43247!2zVHLGsOG7nW5nIFRydW5nIEPhuqVwIEPDtG5nIE5naGnhu4dwIELDrG5oIETGsMahbmc!5e0!3m2!1svi!2s!4v1767879214967!5m2!1svi!2s" width="300" height="150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+
+        window.onload = function() {
+            const rawData = localStorage.getItem('selectedAnimal');
+            if (rawData) {
+                const animal = JSON.parse(rawData);
+                document.getElementById('animalName').innerText = animal.ten;
+                document.getElementById('animalDesc').innerText = animal.mota;
+                
+                const imgContainer = document.getElementById('animalImages');
+                animal.thuvien.forEach(url => {
+                    const img = document.createElement('img');
+                    img.src = url;
+                    imgContainer.appendChild(img);
+                });
+            }
+        };
+    </script>
+</body>
+</html>
